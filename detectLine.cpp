@@ -19,8 +19,8 @@ int main(int argc, const char* argv[])
 	}
 
     cv::Mat img = cv::imread(argv[1],CV_LOAD_IMAGE_GRAYSCALE);
-    cv::imshow("WS", img);
-    cv::waitKey(0);
+    // cv::imshow("WS", img);
+    // cv::waitKey(0);
 
     std::vector<KeyLine> keylines;
 
@@ -31,7 +31,7 @@ int main(int argc, const char* argv[])
 
     for(size_t i = 0; i<keylines.size() ; i++)
     {
-        out<<keylines[i].startPointX<<" "<<keylines[i].startPointY<<" "<<keylines[i].endPointY<<" "<<keylines[i].endPointY<<endl;
+        out<<keylines[i].startPointX<<" "<<keylines[i].startPointY<<" "<<keylines[i].endPointX<<" "<<keylines[i].endPointY<<endl;
     }
 
     out.close();
