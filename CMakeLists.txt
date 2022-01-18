@@ -45,7 +45,7 @@ src/updator.cpp
 )
 
 # Build examples
-
+target_link_libraries(${PROJECT_NAME})
 add_executable(main
 ./main.cpp)
 target_link_libraries(main ${PROJECT_NAME})
@@ -66,4 +66,8 @@ else()
    target_link_libraries(detectline ${OpenCV_LIBS})
 endif()
 
+set(JLINKAGE_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/include
+                          ${PROJECT_SOURCE_DIR}/include/bm
+                          ${PROJECT_SOURCE_DIR}/include/kdtree++
+                          CACHE INTERNAL "${PROJECT_NAME}: Include Directories" FORCE)
 

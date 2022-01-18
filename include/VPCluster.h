@@ -14,6 +14,8 @@
  *
  */
 
+#include <vector>
+
 namespace VPCluster {
 	//return num of clusters
 	unsigned int run(
