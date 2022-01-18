@@ -39,7 +39,7 @@ inline void Read_Line(std::istream& in)
 		ss<<str;
 		ss>>x0; ss>>y0; ss>>x1; ss>>y1;
 		double dx=x0-x1,dy=y0-y1;
-		if( dx*dx+dy*dy<400 )
+		if(dx*dx + dy*dy < 400 )
 			continue;
 
 		std::vector<float>* p = new std::vector<float>(4);
