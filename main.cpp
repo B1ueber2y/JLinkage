@@ -64,12 +64,12 @@ int main(int argc, const char* argv[])
 	Read_Line(ifile);
 	ifile.close();
 
-	std::vector<unsigned int> Lables;
-	std::vector<unsigned int> LableCount;
+	std::vector<unsigned int> Labels;
+	std::vector<unsigned int> LabelCount;
 	{//2. VP cluster
 		std::vector<std::vector<float> *> *mModels = 
 			VPSample::run(&pts, 5000, 2, 0, 3);
-		int classNum = VPCluster::run(Lables, LableCount, &pts, mModels, 2, 2);
+		int classNum = VPCluster::run(Labels, LabelCount, &pts, mModels, 1.0, 2);
 		std::cout<<"vpdetection found "<<classNum<<" classes!"<<std::endl;
 
 		//2.1. release other resource
@@ -79,10 +79,10 @@ int main(int argc, const char* argv[])
 	}
 
 	std::ofstream ofile(argv[2]);
-	unsigned int len = (unsigned int)Lables.size();
+	unsigned int len = (unsigned int)Labels.size();
 	for(unsigned int i=0; i<len; ++i) {
 		ofile<<(*pts[i])[0]<<" "<<(*pts[i])[1]<<" "
-			<<(*pts[i])[2]<<" "<<(*pts[i])[3]<<" "<<Lables.at(i)<<std::endl;
+			<<(*pts[i])[2]<<" "<<(*pts[i])[3]<<" "<<Labels.at(i)<<std::endl;
 	}
 	ofile.close();
 

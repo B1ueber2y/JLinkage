@@ -65,8 +65,8 @@ namespace VPCluster {
 
 	unsigned int run(
 		//// OUTPUT
-		std::vector<unsigned int>& Lables,
-		std::vector<unsigned int>& LableCount,
+		std::vector<unsigned int>& Labels,
+		std::vector<unsigned int>& LabelCount,
 		//// Input arguments
 		// Arg 0, points
 		std::vector<std::vector<float> *> *mDataPoints,
@@ -156,8 +156,8 @@ namespace VPCluster {
 		std::vector<LabelStat> stats;
 
 		unsigned int counterCl = 0;
-		Lables.clear();
-		Lables.resize(mDataPoints->size(),10);
+		Labels.clear();
+		Labels.resize(mDataPoints->size(),10);
 		for(std::list<sClLnk *>::iterator iterCl = mClustersList.begin(); iterCl != mClustersList.end(); ++iterCl){
 			unsigned int cnt=0;
 			for(std::list<sPtLnk *>::iterator iterPt = (*iterCl)->mBelongingPts.begin(); iterPt != (*iterCl)->mBelongingPts.end(); ++iterPt){
@@ -165,7 +165,7 @@ namespace VPCluster {
 				for(std::vector<const sPtLnk *>::iterator iterPtIdx = mPointMap.begin(); iterPtIdx != mPointMap.end(); ++iterPtIdx){
 					if((*iterPt) == (*iterPtIdx)){
 						//mTempUintPointer[counterPt] = counterCl;
-						Lables[counterPt] = counterCl;
+						Labels[counterPt] = counterCl;
 						++cnt;
 						break;
 					}
@@ -181,16 +181,16 @@ namespace VPCluster {
 
 		std::sort(stats.begin(),stats.end());
 		std::vector<unsigned int> Idx(stats.size());
-		LableCount.clear();
+		LabelCount.clear();
 		for(int i=0; i<(int)stats.size(); ++i) {
 			Idx[ stats[i].id ] = i;
-			LableCount.push_back(stats[i].cnt);
+			LabelCount.push_back(stats[i].cnt);
 		}
 
-		unsigned int lsize = (int)Lables.size();
+		unsigned int lsize = (int)Labels.size();
 		for(int i=0; i<(int)lsize; ++i) {
-			unsigned int old = Lables[i];
-			Lables[i] = Idx[old];
+			unsigned int old = Labels[i];
+			Labels[i] = Idx[old];
 		}
 
 		return (int)stats.size();

@@ -18,8 +18,8 @@ namespace VPCluster {
 	//return num of clusters
 	unsigned int run(
 		//// OUTPUT
-		std::vector<unsigned int>& Lables,
-		std::vector<unsigned int>& LableCount,
+		std::vector<unsigned int>& Labels,
+		std::vector<unsigned int>& LabelCount,
 		//// Input arguments
 		// Arg 0, points
 		std::vector<std::vector<float> *> *mDataPoints,
