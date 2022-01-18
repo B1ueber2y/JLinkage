@@ -106,7 +106,7 @@ namespace VPCluster {
 		default: printf("Invalid model type"); return 0; break;
 		}*/
 
-		printf("Initializing Data... \n");
+		// printf("Initializing Data... \n");
 		// Compute the jLinkage Clusterization
 		JLinkage mJLinkage(mDistanceFunction, mInlierThreshold, 
 			(unsigned int)mModels->size(), true, 
@@ -117,23 +117,23 @@ namespace VPCluster {
 		std::list<sClLnk *> mClustersList;
 
 		unsigned int counter = 0;
-		InitializeWaitbar("Loading Models ");
+		// InitializeWaitbar("Loading Models ");
 		for(unsigned int nModelCount = 0; nModelCount < mModels->size(); nModelCount++){
 			mJLinkage.AddModel(((*mModels)[nModelCount]));
 			++counter;
-			UpdateWaitbar((float)counter/(float)mModels->size());
+            UpdateWaitbar((float)counter/(float)mModels->size());
 		}
-		CloseWaitbar();
+		// CloseWaitbar();
 
 		counter = 0;
-		InitializeWaitbar("Loading Points ");
+		// InitializeWaitbar("Loading Points ");
 		for(std::vector<std::vector<float> *>::iterator iterPts = mDataPoints->begin();
 				iterPts != mDataPoints->end(); ++iterPts ){
 			mPointMap[counter] = mJLinkage.AddPoint(*iterPts);
 			++counter;
 			UpdateWaitbar((float)counter/(float)mDataPoints->size());
 		}
-		CloseWaitbar();
+		// CloseWaitbar();
 
 		if(mExistingClusters.size() > 0){
 			printf("\tLoading Existing Models \n");
@@ -145,9 +145,9 @@ namespace VPCluster {
 			}
 		}
 
-		InitializeWaitbar("J-Clusterizing ");
+		// InitializeWaitbar("J-Clusterizing ");
 		mClustersList = mJLinkage.DoJLClusterization(UpdateWaitbar);
-		CloseWaitbar();
+		// CloseWaitbar();
 
 		// Write output
 		// 	plhs[0] = mxCreateDoubleMatrix(1,mDataPoints->size(), mxREAL);
@@ -196,5 +196,5 @@ namespace VPCluster {
 		return (int)stats.size();
 
 	}
-
 }
+

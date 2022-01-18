@@ -40,8 +40,8 @@ namespace Updator {
 			int seconds = (estimetedTimeInSeconds) % 60;
 
 			percent = nValue;
-			std::cout<<"\t(Estimated time = "<<hours<<" h : "
-				<<minutes<<" m : "<<seconds<<" s)\t\t\r";
+			// std::cout<<"\t(Estimated time = "<<hours<<" h : "
+			//  	<<minutes<<" m : "<<seconds<<" s)\t\t\r";
 		}
 
 		nPreviousValue = nValue;

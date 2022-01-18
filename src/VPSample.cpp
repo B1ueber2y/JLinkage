@@ -138,11 +138,11 @@ namespace VPSample {
 
 		RandomSampler mRandomSampler(mGetFunction, mDistanceFunction, (int)(*(*mDataPoints)[0]).size()-1, mMSS, (int)mDataPoints->size(),true);
 
-		printf("Inizialing Data \n");
-		printf("\t Loading Points... \n");
+		// printf("Inizialing Data \n");
+		// printf("\t Loading Points... \n");
 		mRandomSampler.SetPoints(mDataPoints);
 
-		printf("\t Inizialing Probabilities... \n");
+		// printf("\t Inizialing Probabilities... \n");
 		if(mFirstSamplingVector != NULL)
 			for(unsigned int i=0; i < mDataPoints->size(); i++)
 				mRandomSampler.SetFirstSamplingProb(i, (float)mFirstSamplingVector[i]);
@@ -155,10 +155,10 @@ namespace VPSample {
 		if(NFST_NN_ME == mNFSamplingType)
 			mRandomSampler.SetNFSamplingTypeNN(mKdTreeRange, (float)mKdTreeCloseProb, (float)mKdTreeFarProb, true);
 
-		InitializeWaitbar("Generating Hypotesis");
+		// InitializeWaitbar("Generating Hypothesis");
 		std::vector<std::vector<float> *> *mModels = 
 			mRandomSampler.GetNSample(mNSample, 0, NULL, &UpdateWaitbar);
-		CloseWaitbar();
+		// CloseWaitbar();
 
 
 		return mModels;
