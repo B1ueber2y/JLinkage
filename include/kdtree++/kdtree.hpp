@@ -223,13 +223,13 @@ namespace KDTree
       // reverse_iterator rend() { return reverse_iterator(begin()); }
 
       iterator
-      insert(iterator /* ignored */, const_reference __V) throw (std::bad_alloc)
+      insert(iterator /* ignored */, const_reference __V) noexcept(false)
       {
          return this->insert(__V);
       }
 
       iterator
-      insert(const_reference __V) throw (std::bad_alloc)
+      insert(const_reference __V) noexcept(false)
       {
         if (!_M_get_root())
           {
@@ -558,7 +558,7 @@ namespace KDTree
 
       iterator
       _M_insert(_Link_type __N, const_reference __V,
-             size_t const __L) throw (std::bad_alloc)
+             size_t const __L) noexcept(false)
       {
         if (_Node_compare_(__L % mK,_M_acc)(__V, __N))
           {

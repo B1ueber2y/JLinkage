@@ -544,7 +544,7 @@ public:
                         break;
                     }
                     gap_word_t prev = *(bdescr->gap_.ptr);
-                    register unsigned val = *(++(bdescr->gap_.ptr));
+                    unsigned val = *(++(bdescr->gap_.ptr));
 
                     this->position_ += val - prev;
                     // next gap is now "ON"
@@ -637,7 +637,7 @@ public:
 
             do
             {
-                register bm::word_t w = *(bdescr->bit_.ptr);
+                bm::word_t w = *(bdescr->bit_.ptr);
 
                 if (w)  
                 {
@@ -674,7 +674,7 @@ public:
 
             do
             {
-                register unsigned val = *(bdescr->gap_.ptr);
+                unsigned val = *(bdescr->gap_.ptr);
 
                 if (bitval)
                 {
@@ -2350,7 +2350,7 @@ bool bvector<Alloc, MS>::and_bit_no_check(bm::id_t n, bool val)
 template<class Alloc, class MS> 
 void bvector<Alloc, MS>::stat(unsigned blocks) const
 {
-    register bm::id_t count = 0;
+    bm::id_t count = 0;
     int printed = 0;
 
     int total_gap_eff = 0;
@@ -2363,7 +2363,7 @@ void bvector<Alloc, MS>::stat(unsigned blocks) const
     unsigned nb;
     for (nb = 0; nb < blocks; ++nb)
     {
-        register const bm::word_t* blk = blockman_.get_block(nb);
+        const bm::word_t* blk = blockman_.get_block(nb);
 
         if (blk == 0)
         {

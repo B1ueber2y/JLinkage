@@ -74,7 +74,7 @@ inline std::vector<float>  *GetFunction_VP(const std::vector<sPt *> &nDataPtXMss
 
 inline float DistanceFunction_VP(const std::vector<float> &nModel, 
 	const std::vector<float>  &nDataPt){
-	float l[3], mid[3] = {(nDataPt[0]+nDataPt[2])/2.0, (nDataPt[1]+nDataPt[3])/2.0, 1};
+	float l[3], mid[3] = {static_cast<float>(nDataPt[0]+nDataPt[2]) / 2.0f, static_cast<float>(nDataPt[1]+nDataPt[3]) / 2.0f, 1};
 	vec_cross(mid[0],mid[1],mid[2],
 		nModel[0],nModel[1],nModel[2],
 		l[0],l[1],l[2]);

@@ -471,8 +471,8 @@ unsigned gap_bfind(const T* buf, unsigned pos, unsigned* is_set)
     BM_ASSERT(pos < bm::gap_max_bits);
 	*is_set = (*buf) & 1;
 
-	register unsigned start = 1;
-	register unsigned end = 1 + ((*buf) >> 3);
+	unsigned start = 1;
+	unsigned end = 1 + ((*buf) >> 3);
 
 	while ( start != end )
 	{
@@ -658,10 +658,10 @@ template<class T> T sum_arr(T* first, T* last)
 */
 template<typename T> unsigned gap_bit_count(const T* buf) 
 {
-    register const T* pcurr = buf;
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;
+    const T* pend = pcurr + (*pcurr >> 3);
 
-    register unsigned bits_counter = 0;
+    unsigned bits_counter = 0;
     ++pcurr;
 
     if (*buf & 1)
@@ -807,8 +807,8 @@ void gap_buff_op(T*         BMRESTRICT dest,
                  unsigned   vect2_mask, 
                  F f)
 {
-    register const T*  cur1 = vect1;
-    register const T*  cur2 = vect2;
+    const T*  cur1 = vect1;
+    const T*  cur2 = vect2;
 
     unsigned bitval1 = (*cur1++ & 1) ^ vect1_mask;
     unsigned bitval2 = (*cur2++ & 1) ^ vect2_mask;
@@ -816,7 +816,7 @@ void gap_buff_op(T*         BMRESTRICT dest,
     unsigned bitval = f(bitval1, bitval2);
     unsigned bitval_prev = bitval;
 
-    register T* res = dest; 
+    T* res = dest; 
     *res = bitval;
     ++res;
 
@@ -887,8 +887,8 @@ unsigned gap_buff_any_op(const T*   BMRESTRICT vect1,
                          unsigned              vect2_mask, 
                          F                     f)
 {
-    register const T*  cur1 = vect1;
-    register const T*  cur2 = vect2;
+    const T*  cur1 = vect1;
+    const T*  cur2 = vect2;
 
     unsigned bitval1 = (*cur1++ & 1) ^ vect1_mask;
     unsigned bitval2 = (*cur2++ & 1) ^ vect2_mask;
@@ -953,8 +953,8 @@ unsigned gap_buff_any_op(const T*   BMRESTRICT vect1,
 template<typename T, class F> 
 unsigned gap_buff_count_op(const T*  vect1, const T*  vect2, F f)
 {
-    register const T* cur1 = vect1;
-    register const T* cur2 = vect2;
+    const T* cur1 = vect1;
+    const T* cur2 = vect2;
 
     unsigned bitval1 = (*cur1++ & 1);
     unsigned bitval2 = (*cur2++ & 1);
@@ -1032,7 +1032,7 @@ template<typename T> unsigned gap_set_value(unsigned val,
     BM_ASSERT(pos < bm::gap_max_bits);
     unsigned curr = gap_bfind(buf, pos, is_set);
 
-    register T end = (*buf >> 3);
+    T end = (*buf >> 3);
 	if (*is_set == val)
 	{
 		*is_set = 0;
@@ -1040,9 +1040,9 @@ template<typename T> unsigned gap_set_value(unsigned val,
 	}
     *is_set = 1;
 
-    register T* pcurr = buf + curr;
-    register T* pprev = pcurr - 1;
-    register T* pend = buf + end;
+    T* pcurr = buf + curr;
+    T* pprev = pcurr - 1;
+    T* pend = buf + end;
 
     // Special case, first bit GAP operation. There is no platform beside it.
     // initial flag must be inverted.
@@ -1130,7 +1130,7 @@ template<typename T> int gap_find_in_block(const T* buf,
        return 1;
     }
 
-    register unsigned val = buf[gap_idx] + 1;
+    unsigned val = buf[gap_idx] + 1;
     *prev += val - nbit;
  
     return (val != bm::gap_max_bits);  // no bug here.
@@ -1334,8 +1334,8 @@ inline void xor_bit_block(unsigned* dest,
 template<typename T> 
 void gap_sub_to_bitset(unsigned* dest, const T*  buf)
 {
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     if (*buf & 1)  // Starts with 1
@@ -1366,8 +1366,8 @@ void gap_sub_to_bitset(unsigned* dest, const T*  buf)
 template<typename T> 
 void gap_xor_to_bitset(unsigned* dest, const T*  buf)
 {
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     if (*buf & 1)  // Starts with 1
@@ -1398,8 +1398,8 @@ void gap_xor_to_bitset(unsigned* dest, const T*  buf)
 template<typename T> 
 void gap_add_to_bitset(unsigned* dest, const T*  buf)
 {
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     if (*buf & 1)  // Starts with 1
@@ -1430,8 +1430,8 @@ void gap_add_to_bitset(unsigned* dest, const T*  buf)
 template<typename T> 
 void gap_and_to_bitset(unsigned* dest, const T*  buf)
 {
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     if (! (*buf & 1) )  // Starts with 0 
@@ -1534,8 +1534,8 @@ bm::id_t gap_bitset_and_count(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     bm::id_t count = 0;
@@ -1637,8 +1637,8 @@ bm::id_t gap_bitset_and_any(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     bm::id_t count = 0;
@@ -1676,8 +1676,8 @@ bm::id_t gap_bitset_sub_count(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     bm::id_t count = 0;
@@ -1709,8 +1709,8 @@ bm::id_t gap_bitset_sub_any(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     bm::id_t count = 0;
@@ -1747,13 +1747,13 @@ bm::id_t gap_bitset_xor_count(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     unsigned bitval = *buf & 1;
     
-    register bm::id_t count = bit_block_calc_count_range(block, 0, *pcurr);
+    bm::id_t count = bit_block_calc_count_range(block, 0, *pcurr);
     if (bitval)
     {
         count = *pcurr + 1 - count;
@@ -1786,13 +1786,13 @@ bm::id_t gap_bitset_xor_any(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     unsigned bitval = *buf & 1;
     
-    register bm::id_t count = bit_block_any_range(block, 0, *pcurr);
+    bm::id_t count = bit_block_any_range(block, 0, *pcurr);
     if (bitval)
     {
         count = *pcurr + 1 - count;
@@ -1829,13 +1829,13 @@ bm::id_t gap_bitset_or_count(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     unsigned bitval = *buf & 1;
     
-    register bm::id_t count;
+    bm::id_t count;
     if (bitval)
     {
         count = *pcurr + 1;
@@ -1876,13 +1876,13 @@ bm::id_t gap_bitset_or_any(const unsigned* block, const T*  buf)
 {
     BM_ASSERT(block);
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     unsigned bitval = *buf & 1;
     
-    register bm::id_t count;
+    bm::id_t count;
     if (bitval)
     {
         count = *pcurr + 1;
@@ -2004,8 +2004,8 @@ template<typename T> unsigned gap_control_sum(const T* buf)
 {
     unsigned end = *buf >> 3;
 
-    register const T* pcurr = buf;    
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* pcurr = buf;    
+    const T* pend = pcurr + (*pcurr >> 3);
     ++pcurr;
 
     if (*buf & 1)  // Starts with 1
@@ -2310,15 +2310,15 @@ template<typename T>
                                 bm::id_t bits, 
                                 unsigned dest_len)
 {
-    register T* BMRESTRICT pcurr = dest;
+    T* BMRESTRICT pcurr = dest;
     T* BMRESTRICT end = dest + dest_len; 
-    register int bitval = (*src) & 1;
+    int bitval = (*src) & 1;
     *pcurr |= bitval;
 
     ++pcurr;
     *pcurr = 0;
-    register unsigned bit_idx = 0;
-    register int bitval_next;
+    unsigned bit_idx = 0;
+    int bitval_next;
 
     unsigned val = *src;
 
@@ -2349,7 +2349,7 @@ template<typename T>
         }
 
 
-        register unsigned mask = 1;
+        unsigned mask = 1;
         while (mask)
         {
             // Now plain bitshifting. Optimization wanted.
@@ -2398,8 +2398,8 @@ D gap_convert_to_arr(D* BMRESTRICT       dest,
                      const T* BMRESTRICT buf,
                      unsigned            dest_len)
 {
-    register const T* BMRESTRICT pcurr = buf;
-    register const T* pend = pcurr + (*pcurr >> 3);
+    const T* BMRESTRICT pcurr = buf;
+    const T* pend = pcurr + (*pcurr >> 3);
 
     D* BMRESTRICT dest_curr = dest;
     ++pcurr;
@@ -2446,13 +2446,13 @@ template<typename T> T bit_convert_to_arr(T* BMRESTRICT dest,
                                           bm::id_t bits, 
                                           unsigned dest_len)
 {
-    register T* BMRESTRICT pcurr = dest;
+    T* BMRESTRICT pcurr = dest;
     T* BMRESTRICT end = dest + dest_len; 
-    register unsigned bit_idx = 0;
+    unsigned bit_idx = 0;
 
     do
     {
-        register unsigned val = *src;
+        unsigned val = *src;
         // We can skip if *src == 0 
 
         while (val == 0)
@@ -3881,7 +3881,7 @@ int bit_find_in_block(const bm::word_t* data,
                       unsigned nbit, 
                       bm::id_t* prev)
 {
-    register bm::id_t p = *prev;
+    bm::id_t p = *prev;
     int found = 0;
 
     for(;;)
@@ -3889,7 +3889,7 @@ int bit_find_in_block(const bm::word_t* data,
         unsigned nword  = nbit >> bm::set_word_shift;
         if (nword >= bm::set_block_size) break;
 
-        register bm::word_t val = data[nword] >> (p & bm::set_word_mask);
+        bm::word_t val = data[nword] >> (p & bm::set_word_mask);
 
         if (val)
         {

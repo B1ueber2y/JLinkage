@@ -958,7 +958,7 @@ public:
         bm::word_t* old_block;
 
         // top block index
-        register unsigned nblk_blk = nb >> bm::set_array_shift;
+        unsigned nblk_blk = nb >> bm::set_array_shift;
 
         // auto-resize the top block array
         if (nblk_blk >= top_block_size_)
@@ -1017,7 +1017,7 @@ public:
         }
 
         // top block index
-        register unsigned nblk_blk = nb >> bm::set_array_shift;
+        unsigned nblk_blk = nb >> bm::set_array_shift;
 
         // auto-resize the top block array
         if (nblk_blk >= top_block_size_)
