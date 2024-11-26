@@ -14,12 +14,9 @@ endif()
 
 add_subdirectory(${LIBRARY_FOLDER})
 
-# # Compilation options
-# if(MSVC)
-# 	target_compile_options(${LIBRARY_NAME} PRIVATE /bigobj /fp:fast)
-# else()
-# 	target_compile_options(${LIBRARY_NAME} PRIVATE
-# 		-march=native -ffast-math -fno-unsafe-math-optimizations
-# 		-funroll-loops -fprefetch-loop-arrays -funswitch-loops
-# 	 	-Wall -fPIC -Wno-ignored-optimization-argument)
-# endif()
+# Compilation options
+if(MSVC)
+	target_compile_options(${LIBRARY_NAME} PRIVATE /bigobj /fp:fast)
+else()
+	target_compile_options(${LIBRARY_NAME} PRIVATE -march=native -fPIC)
+endif()
