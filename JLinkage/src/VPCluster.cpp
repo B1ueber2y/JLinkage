@@ -15,11 +15,11 @@
  */
 
 #include "stdio.h"
-#include "updator.h"
-#include "RandomSampler.h"
-#include "JLinkage.h"
-#include "VPPrimitive.h"
-#include "VPCluster.h"
+#include "JLinkage/include/updator.h"
+#include "JLinkage/include/RandomSampler.h"
+#include "JLinkage/include/JLinkage.h"
+#include "JLinkage/include/VPPrimitive.h"
+#include "JLinkage/include/VPCluster.h"
 
 namespace VPCluster {
 	using namespace Updator;

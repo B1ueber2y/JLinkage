@@ -1,4 +1,4 @@
-#include "JLinkage.h"
+#include "JLinkage/include/JLinkage.h"
 
 #ifndef JL_NO_THREADS
 // Mutex for shared variables over threads

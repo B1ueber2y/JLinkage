@@ -14,11 +14,11 @@
  *
  */
 
-#include "RandomSampler.h"
-#include "JLinkage.h"
-#include "VPPrimitive.h"
-#include "updator.h"
-#include "VPSample.h"
+#include "JLinkage/include/RandomSampler.h"
+#include "JLinkage/include/JLinkage.h"
+#include "JLinkage/include/VPPrimitive.h"
+#include "JLinkage/include/updator.h"
+#include "JLinkage/include/VPSample.h"
 
 #include <iostream>
 #include <fstream>

@@ -1,4 +1,4 @@
-#include "updator.h"
+#include "JLinkage/include/updator.h"
 #include <iostream>
 #include <math.h>
 #include <ctime>
@@ -29,15 +29,15 @@ namespace Updator {
 				return;
 			}
 
-			int estimetedTimeInSeconds = 0;
-			if(nValue > 0.0)
-				estimetedTimeInSeconds =(int)( 
-				((float)(currentTime - initialTime)  
-				* (float)((1.f-nValue) * 100.f)) /(float)((nValue) * 100.f)) ;
+			// int estimetedTimeInSeconds = 0;
+			// if(nValue > 0.0)
+			// 	estimetedTimeInSeconds =(int)( 
+			// 	((float)(currentTime - initialTime)  
+			// 	* (float)((1.f-nValue) * 100.f)) /(float)((nValue) * 100.f)) ;
 
-			int hours = (estimetedTimeInSeconds) / (3600);
-			int minutes = ((estimetedTimeInSeconds) / 60) % 60;
-			int seconds = (estimetedTimeInSeconds) % 60;
+			// int hours = (estimetedTimeInSeconds) / (3600);
+			// int minutes = ((estimetedTimeInSeconds) / 60) % 60;
+			// int seconds = (estimetedTimeInSeconds) % 60;
 
 			percent = nValue;
 			// std::cout<<"\t(Estimated time = "<<hours<<" h : "

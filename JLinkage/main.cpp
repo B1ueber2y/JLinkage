@@ -21,9 +21,9 @@
 #include <vector>
 #include <sstream>
 
-#include "updator.h"
-#include "VPCluster.h"
-#include "VPSample.h"
+#include "JLinkage/include/updator.h"
+#include "JLinkage/include/VPCluster.h"
+#include "JLinkage/include/VPSample.h"
 
 std::vector< std::vector<float> *> pts;
 

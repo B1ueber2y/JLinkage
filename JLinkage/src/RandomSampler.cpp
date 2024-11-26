@@ -1,4 +1,4 @@
-#include "RandomSampler.h"
+#include "JLinkage/include/RandomSampler.h"
 #include "stdio.h" //FC
 
 // Constructor - Set functions, MSS and points. Non uniform sampling type must be set later
@@ -146,7 +146,7 @@ int RandomSampler::SetPoints(std::vector<std::vector<float> *> *nDataPoints){
 int RandomSampler::AddPoint3d(double nCoordinate[]){
 
 	if(!mCopyPtsCoords)
-		return NULL;
+		return -1;
 	
 	std::vector<float> *nCoordinatesVec = new std::vector<float>(3);
 	(*nCoordinatesVec)[0] = (float) nCoordinate[0];
@@ -636,7 +636,7 @@ std::vector<std::vector<float> *> *RandomSampler::GetNSample(unsigned int nSampl
 
 #ifndef RS_NO_THREADS
 	boost::thread_group *tg = new boost::thread_group();
-#endif RS_NO_THREADS
+#endif
 		
 	// Get all the samples
 	for(unsigned int n=0; n<nSampleN; n++){
@@ -681,7 +681,7 @@ std::vector<std::vector<float> *> *RandomSampler::GetNSample(unsigned int nSampl
 	if(tg->size() > 0)
 		tg->join_all();
 	delete tg;
-#endif RS_NO_THREADS
+#endif
 
 	return nPrevModels;
 
@@ -700,7 +700,7 @@ std::vector<std::vector<float> *> *RandomSampler::GetNSampleFromStartingPoint(un
 
 #ifndef RS_NO_THREADS
 	boost::thread_group *tg = new boost::thread_group();
-#endif RS_NO_THREADS
+#endif
 		
 	// Get all the samples
 	for(unsigned int n=0; n<nSampleN; n++){
@@ -741,7 +741,7 @@ std::vector<std::vector<float> *> *RandomSampler::GetNSampleFromStartingPoint(un
 	if(tg->size() > 0)
 		tg->join_all();
 	delete tg;
-#endif RS_NO_THREADS
+#endif
 
 	return nPrevModels;
 }
