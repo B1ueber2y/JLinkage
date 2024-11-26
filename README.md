@@ -1,6 +1,6 @@
 # JLinkage
 
-To detect vanishing point using jlinkage, or more precisely, group line segments by their corresponding vanishing point(vp).
+To detect vanishing point using jlinkage, e.g., group line segments by their corresponding vanishing point (VP).
 
 To make JLinkage can be used easily in Linux System, This codes is modified from [simbaforrest](https://github.com/simbaforrest/vpdetection). 
 
